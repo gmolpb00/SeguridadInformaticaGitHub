@@ -41,8 +41,8 @@ public class Principal {
 		Double longitudMedia = 0.0;
 		Double eficaciaFinal;
 
-		pr02.Principal obj = new pr02.Principal();
-		codigoHuffman = obj.huffmanBinario(prob);
+		pr02.Principal pr02 = new pr02.Principal();
+		codigoHuffman = pr02.huffmanBinario(prob);
 
 		for (int i = 0; i < codigoHuffman.size(); i++) {
 			longitudMedia += codigoHuffman.get(i).length() * prob[i];

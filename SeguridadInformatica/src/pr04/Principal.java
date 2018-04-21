@@ -2,58 +2,69 @@ package pr04;
 
 public class Principal {
 
+	// public static final int[][] A = { { 0, 2, 1, 1 }, { 1, 1, 2, 1 }, { 1, 1, 1,
+	// 2 } };
+
+	public static final int[][] A = { { 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 0, 1 },
+			{ 1, 0, 1, 1, 1, 0, 0, 0, 1, 0, 1, 1 }, { 0, 1, 1, 1, 0, 0, 0, 1, 0, 1, 1, 1 },
+			{ 1, 1, 1, 0, 0, 0, 1, 0, 1, 1, 0, 1 }, { 1, 1, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1 },
+			{ 1, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1 }, { 0, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1 },
+			{ 0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1 }, { 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1 },
+			{ 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1 }, { 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1 },
+			{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 } };
+
+	public static final int q = 2;
+
 	public static void main(String[] args) {
-		// rellenarVector(3, 3);
-		int[][] x = { { 0, 2, 1, 1 }, { 1, 1, 2, 1 }, { 1, 1, 1, 2 } };
-		devolverDistanciaHamming(x, 3);
-		int[][] ej03 = 
-				{{1,1,0,1,1,1,0,0,0,1,0,1},
-				{1,0,1,1,1,0,0,0,1,0,1,1},
-				{0,1,1,1,0,0,0,1,0,1,1,1},
-				{1,1,1,0,0,0,1,0,1,1,0,1},
-				{1,1,0,0,0,1,0,1,1,0,1,1},
-				{1,0,0,0,1,0,1,1,0,1,1,1},
-				{0,0,0,1,0,1,1,0,1,1,1,1},
-				{0,0,1,0,1,1,0,1,1,1,0,1},
-				{0,1,0,1,1,0,1,1,1,0,0,1},
-				{1,0,1,1,0,1,1,1,0,0,0,1},
-				{0,1,1,0,1,1,1,0,0,0,1,1},
-				{1,1,1,1,1,1,1,1,1,1,1,0}};
-		devolverDistanciaHamming(ej03, 2);
+
+		Principal objeto = new Principal();
+
+		objeto.devolverDistanciaHamming(A, q);
 	}
 
-	private static void devolverDistanciaHamming(int[][] matrizA, int qario) {
+	public void devolverDistanciaHamming(int[][] matrizA, int qario) {
 
 		int[][] matrizG;
 
 		matrizG = crearMatrizG(matrizA);
+
 		int[][] vectoresMultiplicacion = rellenarVector(qario, matrizG.length);
+
 		int[][] listaPalabrasCodigo = crearPalabrasCodigo(matrizG, vectoresMultiplicacion, qario);
+
 		int distancia = calcularHamming(listaPalabrasCodigo);
+
+		System.out.println("Numero de palabras: " + listaPalabrasCodigo.length + "\nCon un tamaño de palabra de "
+				+ listaPalabrasCodigo[0].length);
+
 		System.out.println("M.D.H. " + distancia);
 
 	}
 
-	private static int calcularHamming(int[][] listaPalabrasCodigo) {
+	public int calcularHamming(int[][] listaPalabrasCodigo) {
+
 		int resultado = listaPalabrasCodigo[0].length;
-		for (int i = 0; i<listaPalabrasCodigo.length; i++) {
+
+		for (int i = 0; i < listaPalabrasCodigo.length; i++) {
 			int[] palabra = listaPalabrasCodigo[i];
-			
-			for (int x = 0; x<listaPalabrasCodigo.length; x++) {
+
+			for (int x = i; x < listaPalabrasCodigo.length; x++) {
 				int temp = 0;
-				for (int j = 0; j<listaPalabrasCodigo[0].length;j++) {
-					if (palabra[j] == listaPalabrasCodigo[x][j]) {
+
+				for (int j = 0; j < listaPalabrasCodigo[0].length; j++) {
+					if (palabra[j] != listaPalabrasCodigo[x][j]) {
 						temp++;
 					}
 				}
 				if (temp != 0)
-					resultado = (temp<resultado) ? temp : resultado;
-			}	
+					resultado = (temp < resultado) ? temp : resultado;
+			}
 		}
 		return resultado;
 	}
 
-	public static int[][] crearPalabrasCodigo(int[][] matrizG, int[][] vectoresMultiplicacion, int qario) {
+	public int[][] crearPalabrasCodigo(int[][] matrizG, int[][] vectoresMultiplicacion, int qario) {
+
 		int[][] resultado = new int[vectoresMultiplicacion.length][matrizG[0].length];
 
 		for (int i = 0; i < resultado.length; i++) {
@@ -66,23 +77,26 @@ public class Principal {
 				// System.out.print(resultado[i][j]);
 
 			}
-			
+			// System.out.println();
+
 		}
-		System.out.println("Numero de palabras: " + resultado.length + "\nCon un tamaño de palabra de " + resultado[0].length);
 		return resultado;
 	}
 
-	public static int[][] rellenarVector(int qario, int k) {
+	public int[][] rellenarVector(int qario, int k) {
 
 		int[][] resultado = new int[(int) Math.pow(qario, k)][k];
 		int[] inicial = new int[k];
+
 		for (int t = 0; t < k; t++)
 			inicial[t] = 0;
+
 		for (int i = 0; i < resultado.length; i++) {
 
-			// for (int j = 0; j < inicial.length; j++)
-			// System.out.print(inicial[j]);
-			// System.out.println();
+			/*
+			 * for (int j = 0; j < inicial.length; j++) { System.out.print(inicial[j]); }
+			 * System.out.println();
+			 */
 
 			resultado[i] = inicial.clone(); // recorro vertical
 			inicial = incrementa(inicial, qario); // recorro horizontal
@@ -92,7 +106,7 @@ public class Principal {
 		return resultado;
 	}
 
-	private static int[] incrementa(int[] inicial, int qario) {
+	private int[] incrementa(int[] inicial, int qario) {
 		int tamano = inicial.length - 1;
 		boolean fin = false;
 
@@ -110,7 +124,7 @@ public class Principal {
 		return inicial;
 	}
 
-	public static int[][] crearMatrizG(int[][] matrizA) {
+	public int[][] crearMatrizG(int[][] matrizA) {
 
 		int[][] matrizG = new int[matrizA.length][matrizA[0].length + matrizA.length];
 
@@ -128,10 +142,10 @@ public class Principal {
 				} else {
 					matrizG[i][j] = matrizA[i][j - ordenIdentidad];
 				}
-				System.out.print(matrizG[i][j]);
+				//System.out.print(matrizG[i][j]);
 			}
 
-			System.out.println();
+			//System.out.println();
 		}
 
 		return matrizG;

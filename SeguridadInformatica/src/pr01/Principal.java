@@ -91,8 +91,8 @@ public class Principal {
 			letra[x] = i;
 			x++;
 		}
-		pr03.Principal obj = new pr03.Principal();
+		pr03.Principal pr03 = new pr03.Principal();
 
-		obj.calcularEntropiaYEficacia(frec, 1);
+		pr03.calcularEntropiaYEficacia(frec, 1);
 	}
 }
