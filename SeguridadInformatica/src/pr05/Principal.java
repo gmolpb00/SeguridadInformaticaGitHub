@@ -33,19 +33,20 @@ public class Principal {
 		Principal objeto = new Principal();
 
 		objeto.codificar("ac!", alf, A, q);
-		System.out.println();System.out.println();
+		System.out.println();
+		System.out.println();
 		objeto.descodificar(lista, alf, A, q);
 	}
 
 	public void descodificar(int[] codigo, String alfabeto, int[][] matrizA, int qario) {
-		
+
 		System.out.println("Se descodificará un codigo en base a un alfabeto");
 		System.out.print("Codificacion: \t");
 		for (int i = 0; i < codigo.length; i++) {
 			System.out.print(codigo[i] + " ");
 		}
 		System.out.println();
-		System.out.println("Alfabeto:\t"+alfabeto);
+		System.out.println("Alfabeto:\t" + alfabeto);
 
 		int[][] codificacion = dividir(codigo, matrizA.length + matrizA[0].length);
 		int[] cola = obtenerCola(codigo, matrizA.length + matrizA[0].length);
@@ -56,18 +57,18 @@ public class Principal {
 
 		String palabra = descodificarTexto(secuencia, alfabeto, qario);
 
-		System.out.println("\nPalabra descodificada:\n"+palabra);
+		System.out.println("\nPalabra descodificada:\n" + palabra);
 
 	}
 
 	public void codificar(String palabra, String alfabeto, int[][] matrizA, int qario) {
 		System.out.println("Se codificará una palabra en base a un alfabeto");
-		System.out.println("Palabra:\t"+palabra);
-		System.out.println("Alfabeto:\t"+alfabeto);
+		System.out.println("Palabra:\t" + palabra);
+		System.out.println("Alfabeto:\t" + alfabeto);
 
 		pr04.Principal pr04 = new pr04.Principal();
 
-		int[][] matrizG = pr04.crearMatrizG(matrizA);
+		int[][] matrizG = pr04.crearMatrizGIzquierda(matrizA);
 
 		int[] secuencia = codificarTexto(palabra, alfabeto, qario);
 
@@ -104,7 +105,7 @@ public class Principal {
 
 			if (i % longitudSimbolos == longitudSimbolos - 1) {
 				for (int j = 0; j < simbolosCodificados.length; j++) {
-					if (Arrays.equals(aux,simbolosCodificados[j])) {
+					if (Arrays.equals(aux, simbolosCodificados[j])) {
 
 						resultado += alf.charAt(j);
 						break;
@@ -163,7 +164,7 @@ public class Principal {
 
 	private int[] fusionarMatrizYVector(int[][] matriz, int[] vector) {
 		int[] fusion;
-		
+
 		if (vector != null) {
 			fusion = new int[vector.length + (matriz.length * matriz[0].length)];
 		} else {
@@ -186,30 +187,8 @@ public class Principal {
 		return fusion;
 	}
 
-	/*
-	 * public int[][] matrizNegativaTraspuesta(int[][] matrizA, int qario) {
-	 * 
-	 * int[][] negativaTraspuesta = new int[matrizA[0].length][matrizA.length];
-	 * 
-	 * for (int i = 0; i < matrizA.length; i++) { for (int j = 0; j <
-	 * matrizA[0].length; j++) {
-	 * 
-	 * negativaTraspuesta[j][i] = (qario - matrizA[i][j] % qario) % qario; } }
-	 * 
-	 * return negativaTraspuesta; }
-	 */
-	/*
-	 * public int[][] matrizTraspuesta(int[][] matrizA) {
-	 * 
-	 * int[][] traspuesta = new int[matrizA[0].length][matrizA.length];
-	 * 
-	 * for (int i = 0; i < matrizA.length; i++) { for (int j = 0; j <
-	 * matrizA[0].length; j++) {
-	 * 
-	 * traspuesta[j][i] =matrizA[i][j]; } }
-	 * 
-	 * return negativaTraspuesta; }
-	 */
+	
+
 	private int[][] dividir(int[] codificado, int length) {
 		// System.out.println("PRE division: ");
 		// for (int e : codificado)

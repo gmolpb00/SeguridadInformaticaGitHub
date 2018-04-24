@@ -2,8 +2,8 @@ package pr04;
 
 public class Principal {
 
-	// public static final int[][] A = { { 0, 2, 1, 1 }, { 1, 1, 2, 1 }, { 1, 1, 1,
-	// 2 } };
+	 public static final int[][] A2 = { { 0, 2, 1, 1 }, { 1, 1, 2, 1 }, { 1, 1, 1,
+	 2 } };
 
 	public static final int[][] A = { { 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 0, 1 },
 			{ 1, 0, 1, 1, 1, 0, 0, 0, 1, 0, 1, 1 }, { 0, 1, 1, 1, 0, 0, 0, 1, 0, 1, 1, 1 },
@@ -22,11 +22,11 @@ public class Principal {
 		objeto.devolverDistanciaHamming(A, q);
 	}
 
-	public void devolverDistanciaHamming(int[][] matrizA, int qario) {
+	public int devolverDistanciaHamming(int[][] matrizA, int qario) {
 
 		int[][] matrizG;
 
-		matrizG = crearMatrizG(matrizA);
+		matrizG = crearMatrizGIzquierda(matrizA);
 
 		int[][] vectoresMultiplicacion = rellenarVector(qario, matrizG.length);
 
@@ -34,10 +34,13 @@ public class Principal {
 
 		int distancia = calcularHamming(listaPalabrasCodigo);
 
+		
 		System.out.println("Numero de palabras: " + listaPalabrasCodigo.length + "\nCon un tamaño de palabra de "
 				+ listaPalabrasCodigo[0].length);
 
 		System.out.println("M.D.H. " + distancia);
+		
+		return distancia;
 
 	}
 
@@ -124,7 +127,7 @@ public class Principal {
 		return inicial;
 	}
 
-	public int[][] crearMatrizG(int[][] matrizA) {
+	public int[][] crearMatrizGIzquierda(int[][] matrizA) {
 
 		int[][] matrizG = new int[matrizA.length][matrizA[0].length + matrizA.length];
 
