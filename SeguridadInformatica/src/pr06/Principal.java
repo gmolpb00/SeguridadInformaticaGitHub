@@ -78,7 +78,7 @@ public class Principal {
 		int t = (distancia - 1) / 2;
 		HashMap<int[], int[]> palabrasCodigoMenorPeso = obtenerTablaSindromes(matrizH, q, t);
 		
-		int[][] secuenciaDividida = 
+		int[][] secuenciaDividida = // multiplicar H por lista Codificada 
 				
 				
 
