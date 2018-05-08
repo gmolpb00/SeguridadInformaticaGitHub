@@ -88,7 +88,7 @@ public class Principal {
 
 	}
 
-	private String descodificarTexto(int[] secuencia, String alf, int qario) {
+	public String descodificarTexto(int[] secuencia, String alf, int qario) {
 
 		pr04.Principal pr04 = new pr04.Principal();
 
@@ -106,7 +106,6 @@ public class Principal {
 			if (i % longitudSimbolos == longitudSimbolos - 1) {
 				for (int j = 0; j < simbolosCodificados.length; j++) {
 					if (Arrays.equals(aux, simbolosCodificados[j])) {
-
 						resultado += alf.charAt(j);
 						break;
 					}
@@ -148,7 +147,7 @@ public class Principal {
 		return resultado;
 	}
 
-	private int[][] seleccionarEnMatriz(int[][] matriz, int desde, int hasta) {
+	public int[][] seleccionarEnMatriz(int[][] matriz, int desde, int hasta) {
 
 		int[][] resultado = new int[matriz.length][hasta - desde];
 
@@ -162,7 +161,7 @@ public class Principal {
 		return resultado;
 	}
 
-	private int[] fusionarMatrizYVector(int[][] matriz, int[] vector) {
+	public int[] fusionarMatrizYVector(int[][] matriz, int[] vector) {
 		int[] fusion;
 
 		if (vector != null) {

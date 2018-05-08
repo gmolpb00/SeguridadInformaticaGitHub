@@ -6,44 +6,46 @@ public class Principal {
 
 	public static final String alf = "abcdefghijklmnopqrstuvwwyzABCDEFGHIJKLMNOPQRSTUVWXYZ :.,;¿¡!";
 
-	public static final int[] lista = { 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1,
-			0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0,
-			1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1,
-			1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0,
-			0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0,
-			0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0,
-			1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1,
-			1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1,
-			0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0,
-			0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0,
-			0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0,
-			1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0,
-			1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1,
-			0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1,
-			1, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1,
-			0, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0,
-			0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 1,
-			1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0,
-			0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0,
-			1, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 1,
-			0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1,
-			1, 0, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1,
-			1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0,
-			0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0,
-			1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0,
-			0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0,
-			0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0,
-			1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1,
-			1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0,
-			1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1,
-			1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0,
-			0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0,
-			1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0,
-			1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1,
-			0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0,
-			0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1,
-			0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1,
-			1, 0, 0, 1, 0, 1, 0, 1, 0 };
+	public static final int[] lista = { 1,0,0,1,1,1,1,0,0,0,0,1,1,0,0,0,0,0,1,1,0,1,1,1,1,0,1,0,1,0,0,0,
+			0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,1,0,0,1,0,1,0,1,1,1,1,0,0,1,1,0,1,0,1,
+			0,1,0,1,0,1,1,1,1,1,0,0,0,0,0,1,1,0,0,0,0,1,1,1,0,1,0,0,0,0,0,0,1,1,
+			0,0,1,1,1,0,1,0,1,0,1,0,1,0,0,1,0,1,1,1,0,1,0,1,0,1,0,1,0,1,0,1,1,1,
+			0,0,0,0,0,0,0,0,1,1,1,0,1,0,1,1,0,1,1,0,0,1,1,0,1,1,0,0,0,0,0,1,1,0,
+			0,0,0,0,1,1,0,1,1,1,0,0,0,1,1,1,1,1,1,0,0,1,1,1,1,0,1,0,1,1,0,1,1,1,
+			1,1,1,0,0,1,1,0,0,1,1,0,1,1,0,1,0,0,1,0,1,1,0,0,0,0,1,1,0,1,0,0,1,0,
+			1,1,0,0,1,0,1,1,0,0,1,1,0,1,1,0,0,0,1,0,1,1,0,0,1,1,0,1,1,0,0,1,1,0,
+			1,0,0,1,1,1,1,0,1,0,0,0,0,1,0,0,0,0,1,1,1,1,1,1,0,0,0,1,1,0,1,0,1,0,
+			0,0,0,0,0,1,1,0,1,1,0,0,0,0,1,0,0,0,1,1,0,1,0,0,1,1,1,0,0,1,1,0,1,1,
+			0,0,0,1,0,0,0,1,1,0,1,1,0,0,0,0,1,0,1,0,0,1,1,0,1,1,0,1,0,1,0,1,1,0,
+			1,0,1,0,1,1,0,1,0,1,0,1,0,0,0,1,0,0,0,0,0,1,0,0,0,0,1,1,0,0,0,0,0,0,
+			0,0,0,0,0,1,1,0,0,0,0,1,0,1,1,0,0,1,0,1,0,1,0,0,1,0,1,1,0,0,1,1,1,0,
+			1,0,0,1,1,1,0,1,0,0,1,0,0,0,0,1,1,0,1,0,0,1,0,0,1,0,1,1,0,1,0,0,0,0,
+			0,1,1,0,0,1,0,0,1,0,0,1,1,0,1,1,0,0,0,1,1,1,0,0,1,1,1,1,0,1,0,1,0,1,
+			0,1,0,0,1,0,1,0,1,1,1,0,1,0,1,0,1,0,1,1,1,1,1,0,1,0,1,0,1,1,1,0,0,1,
+			1,0,0,1,1,0,1,1,1,1,0,1,1,1,1,0,0,1,0,0,0,0,1,1,0,0,1,0,0,0,0,0,1,0,
+			0,1,1,1,1,1,0,1,0,1,0,0,0,1,1,1,1,1,0,1,1,1,1,0,0,0,1,1,0,0,1,1,0,1,
+			0,0,1,0,1,1,0,0,1,0,0,0,0,0,0,1,1,0,0,1,1,1,1,1,0,1,0,0,0,0,1,0,0,0,
+			0,1,1,0,1,0,1,0,0,1,0,1,1,0,0,0,0,1,1,0,0,1,0,0,1,0,1,1,0,0,0,1,0,0,
+			0,1,0,0,1,0,1,1,1,1,0,1,1,0,0,0,0,1,0,1,1,0,0,0,0,0,1,1,1,0,1,0,1,0,
+			1,0,1,0,0,1,0,1,0,0,0,0,0,0,1,1,1,0,1,0,1,0,1,0,0,1,1,0,1,1,0,0,0,1,
+			1,1,0,0,1,1,0,1,1,0,1,0,1,1,1,1,0,1,1,0,0,0,1,0,0,1,1,0,1,1,0,1,0,0,
+			1,0,1,1,1,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,1,1,0,0,0,1,1,1,0,1,1,
+			0,0,1,1,0,0,0,0,1,1,0,1,1,1,0,0,1,1,0,0,1,0,1,1,1,0,0,1,1,0,1,1,0,0,
+			1,0,1,0,0,0,0,1,0,1,1,1,0,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,1,1,1,
+			0,0,0,0,0,1,1,1,0,0,0,0,0,0,1,1,1,1,0,1,0,1,1,1,1,1,0,0,0,1,1,1,1,1,
+			0,1,1,0,0,1,1,0,0,0,0,0,1,0,1,1,1,1,0,0,0,1,1,1,0,0,1,0,0,1,0,0,1,0,
+			1,0,0,0,1,0,0,0,0,1,1,0,0,1,1,0,1,1,0,0,1,1,0,1,0,0,1,1,1,1,0,0,0,0,
+			1,1,0,0,0,0,1,1,1,0,0,0,0,0,1,1,0,0,0,0,0,1,0,1,0,1,1,0,1,0,1,1,0,0,
+			0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,1,1,1,0,1,1,1,1,0,1,0,1,1,1,0,0,1,
+			0,1,0,1,1,1,0,0,1,0,1,1,0,0,0,0,1,0,1,1,1,1,1,0,1,0,1,0,0,0,0,0,0,1,
+			1,0,0,1,1,1,0,0,0,1,1,1,0,0,0,0,1,1,0,1,0,0,0,1,1,0,1,0,0,1,1,1,0,1,
+			0,1,0,1,0,1,1,0,0,1,1,1,0,1,1,0,1,0,1,0,1,0,0,1,0,0,0,0,0,0,0,0,0,1,
+			1,0,0,0,0,1,0,1,0,1,0,0,0,0,1,0,0,0,0,1,1,0,1,0,0,1,0,1,0,0,0,1,0,0,
+			0,0,1,1,1,0,1,1,1,0,1,0,0,0,0,0,1,0,0,1,0,1,1,0,0,1,1,0,1,1,0,0,0,1,
+			0,0,0,0,1,1,1,1,1,0,0,0,0,0,1,1,0,0,0,0,0,1,0,1,1,1,1,0,0,0,1,1,1,1,
+			1,1,0,0,0,1,1,0,1,1,0,1,0,1,0,0,0,1,0,1,0,1,1,1,0,0,0,0,1,1,1,0,1,0,
+			0,1,1,1,1,1,0,1,1,1,0,0,0,0,1,0,1,1,0,1,0,1,1,1,0,0,1,0,1,0,1,0,1,1,
+			0,0,1,0,1,0,1,0};
 
 	public static final int[][] A = { { 1, 1, 1 }, { 1, 1, 0 }, { 1, 0, 1 }, { 0, 1, 1 } };
 
@@ -68,65 +70,128 @@ public class Principal {
 		System.out.println("Alfabeto:\t" + alfabeto);
 
 		pr04.Principal pr04 = new pr04.Principal();
+		pr05.Principal pr05 = new pr05.Principal();
 
 		int[][] codificacion = dividir(codigo, matrizA.length + matrizA[0].length);
 		int[] cola = obtenerCola(codigo, matrizA.length + matrizA[0].length);
 
-		int[][] matrizH = crearMatrizGDerecha(matrizNegativaTraspuesta(matrizA, q));
+		int[][] matrizH = crearMatrizGDerecha(matrizNegativaTraspuesta(matrizA, qario));
 
-		int distancia = pr04.devolverDistanciaHamming(matrizA, q);
+		int distancia = pr04.devolverDistanciaHamming(matrizA, qario);
 		int t = (distancia - 1) / 2;
-		HashMap<int[], int[]> palabrasCodigoMenorPeso = obtenerTablaSindromes(matrizH, q, t);
-		
-		int[][] secuenciaDividida = // multiplicar H por lista Codificada 
-				
-				
+		HashMap<String, int[]> tablaSindromesIncompleta = obtenerTablaSindromes(matrizH, qario, t);
 
-		/*
-		 * int[][] secuenciaDividida = seleccionarEnMatriz(codificacion, 0,
-		 * matrizA.length);
-		 * 
-		 * int[] secuencia = fusionarMatrizYVector(secuenciaDividida, cola);
-		 * 
-		 * String palabra = descodificarTexto(secuencia, alfabeto, qario);
-		 * 
-		 * System.out.println("\nPalabra descodificada:\n"+palabra);
-		 */
+		int[][] sindromeCodigosAux = matrizTraspuesta(
+				multiplicarMatrices(matrizH, matrizTraspuesta(codificacion), qario));// multiplicar H por lista
+		// Codificada
+
+		String[] sindromeCodigos = new String[sindromeCodigosAux.length];
+
+		for (int i = 0; i < sindromeCodigosAux.length; i++) {
+			String aux = "";
+			for (int numero : sindromeCodigosAux[i]) {
+				aux += numero;
+			}
+			sindromeCodigos[i] = aux;
+		}
+
+		int[][] erroresPatron = identificarErrorPatronSindrome(tablaSindromesIncompleta, sindromeCodigos);
+
+		int[][] secuenciaDecodificadaConRuido = restarMatrices(codificacion, erroresPatron, qario);
+		
+		int[][] secuenciaDividida = pr05.seleccionarEnMatriz(secuenciaDecodificadaConRuido, 0, matrizA.length);
+
+		int[] secuencia = pr05.fusionarMatrizYVector(secuenciaDividida, cola);
+		System.out.println();
+		imprimirDobleArray(codificacion);
+		System.out.println();
+		String palabra = pr05.descodificarTexto(secuencia, alfabeto, qario);
+
+		System.out.println("\nPalabra descodificada:\n" + palabra);
+
 	}
 
-	private HashMap<int[], int[]> obtenerTablaSindromes(int[][] matrizH, int q, int t) {
+	private int[][] restarMatrices(int[][] codificacion, int[][] erroresPatron, int qario) {
+
+		int[][] resultado = new int[codificacion.length][codificacion[0].length];
+
+		for (int i = 0; i < resultado.length; i++) {
+			for (int j = 0; j < resultado[0].length; j++) {
+				resultado[i][j] = Math.abs(codificacion[i][j] - erroresPatron[i][j]);
+				// (qario - matrizA[i][j] % qario) % qario
+			}
+		}
+
+		return resultado;
+	}
+
+	private int[][] identificarErrorPatronSindrome(HashMap<String, int[]> tablaSindromesIncompleta,
+			String[] sindromeCodigos) {
+
+		int[][] resultado = new int[sindromeCodigos.length][tablaSindromesIncompleta
+				.get(tablaSindromesIncompleta.keySet().toArray()[0]).length];
+
+		for (int i = 0; i < sindromeCodigos.length; i++) {
+			resultado[i] = tablaSindromesIncompleta.get(sindromeCodigos[i]);
+		}
+		return resultado;
+	}
+
+	public int[][] multiplicarMatrices(int[][] matriz1, int[][] matriz2, int qario) {
+
+		int[][] multiplicacion = new int[matriz1.length][matriz2[0].length];
+
+		for (int x = 0; x < multiplicacion.length; x++) {
+			for (int y = 0; y < multiplicacion[x].length; y++) {
+				for (int z = 0; z < matriz1[0].length; z++) {
+					multiplicacion[x][y] += matriz1[x][z] * matriz2[z][y];
+				}
+				multiplicacion[x][y] = multiplicacion[x][y] % qario;
+			}
+		}
+
+		return multiplicacion;
+	}
+
+	private HashMap<String, int[]> obtenerTablaSindromes(int[][] matrizH, int qario, int t) {
 		pr04.Principal pr04 = new pr04.Principal();
 
-		HashMap<int[], int[]> resultado = new HashMap<int[], int[]> ();
+		HashMap<String, int[]> resultado = new HashMap<String, int[]>();
 
-		int [][] palabrasCodigoLongitudK = pr04.rellenarVector(q, matrizH[0].length);
+		int[][] palabrasCodigoLongitudK = pr04.rellenarVector(qario, matrizH[0].length);
 
-		for (int[] e: palabrasCodigoLongitudK) {
-			int peso=0;
+		for (int[] e : palabrasCodigoLongitudK) {
+			int peso = 0;
 
-			for(int f : e) {
-				if(f!=0) {
-					peso+=1;
+			for (int f : e) {
+				if (f != 0) {
+					peso += 1;
 				}
 			}
-			if(peso<=t) {
-				int[] sindrome = multiplicarMatrizPorVector(matrizH, e);
-				resultado.put(e, sindrome);
+			if (peso <= t) {
+				int[] sindrome = multiplicarMatrizPorVector(matrizH, e, qario);
+				String aux = "";
+				for (int numero : sindrome) {
+					aux += numero;
+				}
+				resultado.put(aux, e);
 			}
 		}
 		return resultado;
 	}
 
-	private int[] multiplicarMatrizPorVector(int[][] matriz, int[] vector) {
+	private int[] multiplicarMatrizPorVector(int[][] matriz, int[] vector, int qario) {
 
 		int[] resultado = new int[matriz.length];
 
 		for (int x = 0; x < matriz.length; x++) {
 			for (int y = 0; y < matriz[0].length; y++) {
-				
+
 				resultado[x] += matriz[x][y] * vector[y];
 
 			}
+			resultado[x] = resultado[x] % qario;
+
 		}
 		return resultado;
 	}
@@ -215,17 +280,19 @@ public class Principal {
 
 		}
 	}
-	/*
-	 * public int[][] matrizTraspuesta(int[][] matrizA) {
-	 * 
-	 * int[][] traspuesta = new int[matrizA[0].length][matrizA.length];
-	 * 
-	 * for (int i = 0; i < matrizA.length; i++) { for (int j = 0; j <
-	 * matrizA[0].length; j++) {
-	 * 
-	 * traspuesta[j][i] = matrizA[i][j]; } }
-	 * 
-	 * return traspuesta; }
-	 */
+
+	public int[][] matrizTraspuesta(int[][] matrizA) {
+
+		int[][] traspuesta = new int[matrizA[0].length][matrizA.length];
+
+		for (int i = 0; i < matrizA.length; i++) {
+			for (int j = 0; j < matrizA[0].length; j++) {
+
+				traspuesta[j][i] = matrizA[i][j];
+			}
+		}
+
+		return traspuesta;
+	}
 
 }
