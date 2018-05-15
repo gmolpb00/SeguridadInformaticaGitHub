@@ -39,48 +39,88 @@ public String[] claves_cifrado2=["xvFB","JvÑfB","JBzvFÑfbÑ","1afBaV6","afBaUT
     "xvFB","JvÑfB","JBzvFÑfbÑ","1afBaV6","afBaUTU.á"]
 
 
-
+/*
+ *	El modulo es el tamaño del alfabeto
+ */
 	
  public static void main(String[] args) {
     		Principal objeto = new Principal();
         for (int i = 0; i<mensaje_cifrado.length(); i++){
-           system.out.println("Fila " + i + ": " + objeto.descifrar(mensaje_cifrado[i], claves_cifrado[i], alf));    
+           system.out.println("Fila " + i + ": " + objeto.cifrar(mensaje_cifrado[i], claves_cifrado[i], alf, true));    
         }
         for (int i = 0; i<mensaje_cifrado2.length(); i++){
-           system.out.println("Fila " + i + ": " + objeto.descifrar(mensaje_cifrado2[i], claves_cifrado2[i], alf2));    
+           system.out.println("Fila " + i + ": " + objeto.cifrar(mensaje_cifrado2[i], claves_cifrado2[i], alf2, true));    
         }
   
        system.out.println("Fin del programa");
         
  }
   
+  /* 	Como cifrar y descifrar viene siendo lo mismo conceptualmente
+   *	solo nos interesa saber si la clave la tenemos que sumar (false)
+   *	o restar (true)
+   */
   
-  
- public String descifrar(String texto, String clave, String alfabeto){
+ public String cifrar(String texto, String clave, String alfabeto, boolean restar){
    
    int cola = texto.length() % clave.lentgh();
    int divisionEntera = texto.length() / clave.lentgh();
    
    int[] claveNumerica = codificacionNumerica(clave, alfabeto);
-   
+   int[] nuevaClaveNumerica = new int[claveNumerica.length];
+   if(restar){
+	int index = 0;
+	for (int e: claveNumerica){
+	
+		nuevaClaveNumerica[index] = complementarioModuloX(e, alfabeto.length);
+		index++;	
+	}
+	   
+   }else
+	nuevaClaveNumerica = claveNumerica;
    int[] textoNumerico = codificacionNumerica(texto, alfabeto);
    
    int[] resultado = new int[texto.length()];
    
-   for (int j = 0; j<divisionEntera; j++){
-     
-     
+   for (int j = 0; j<texto.length(); j++){
+     resultado[j] = sumaModuloX(textoNumerico, nuevaClaveNumerica, alfabeto.length()); 	
    }
-     
-     
-     if(cola != 0){
-       
-     }
-   
-   
+
+   return  codificacionTexto(resultado, alfabeto) + " clave (des)cifrado: " + Arrays.toString(nuevaClaveNumerica);
    
  }
+	
+public int complementarioModuloX(int a, int mod){
+	int resta = -a;
+	return mod + resta;
+	
+}
+public int sumaModuloX(int a, int b, int mod){
+	return (a + b) % mod;
+}
    
+
+public String codificacionTexto(int[] original, String alfabeto){
+  //no tiene en cuenta si alguna palabra no esta en el alfabeto, se da por supuesto.
+  String resultado = "";
+  int index = 0;
+  for (int e: original){
+    int contador = 0;
+    for (String letra: alfabeto){
+      if (e == contador){
+        resultado += letra;
+	break;      
+      }
+      else
+        contador++;
+    }
+  
+  }
+  return resultado;
+}	
+	
+	
+	
 public int[] codificacionNumerica(String original, String alfabeto){
   //no tiene en cuenta si alguna palabra no esta en el alfabeto, se da por supuesto.
   int[] resultado = new int[original.length()];
