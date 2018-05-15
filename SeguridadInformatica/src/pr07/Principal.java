@@ -1,3 +1,4 @@
+import java.util.Arrays;
 public class Principal{
 
   
@@ -64,7 +65,7 @@ public static String[] claves_cifrado2={"xvFB","JvÑfB","JBzvFÑfbÑ","1afBaV6",
  public String cifrar(String texto, String clave, String alfabeto, boolean restar){
    
    int cola = texto.length() % clave.length();
-   int divisionEntera = texto.length() / clave.lentgh();
+   int divisionEntera = texto.length() / clave.length();
    
    int[] claveNumerica = codificacionNumerica(clave, alfabeto);
    int[] nuevaClaveNumerica = new int[claveNumerica.length];
@@ -72,7 +73,7 @@ public static String[] claves_cifrado2={"xvFB","JvÑfB","JBzvFÑfbÑ","1afBaV6",
 	int index = 0;
 	for (int e: claveNumerica){
 	
-		nuevaClaveNumerica[index] = complementarioModuloX(e, alfabeto.length);
+		nuevaClaveNumerica[index] = complementarioModuloX(e, alfabeto.length());
 		index++;	
 	}
 	   
@@ -83,10 +84,10 @@ public static String[] claves_cifrado2={"xvFB","JvÑfB","JBzvFÑfbÑ","1afBaV6",
    int[] resultado = new int[texto.length()];
    
    for (int j = 0; j<texto.length(); j++){
-     resultado[j] = sumaModuloX(textoNumerico[j], nuevaClaveNumerica[j], alfabeto.length()); 	
+     resultado[j] = sumaModuloX(textoNumerico[j], nuevaClaveNumerica[j%nuevaClaveNumerica.length], alfabeto.length()); 	
    }
 
-   return  codificacionTexto(resultado, alfabeto) + " clave (des)cifrado: " + Arrays.toString(nuevaClaveNumerica);
+   return  codificacionTexto(resultado, alfabeto) + " \t\tclave (des)cifrado: " + Arrays.toString(nuevaClaveNumerica);
    
  }
 	
@@ -106,7 +107,7 @@ public String codificacionTexto(int[] original, String alfabeto){
   int index = 0;
   for (int e: original){
     int contador = 0;
-    for (String letra: alfabeto){
+    for (char letra: alfabeto.toCharArray()){
       if (e == contador){
         resultado += letra;
 	break;      
