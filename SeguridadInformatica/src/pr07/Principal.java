@@ -1,3 +1,5 @@
+package pr07;
+
 import java.util.Arrays;
 public class Principal{
 
