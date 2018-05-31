@@ -65,10 +65,7 @@ public static String[] claves_cifrado2={"xvFB","JvÑfB","JBzvFÑfbÑ","1afBaV6",
    */
   
  public String cifrar(String texto, String clave, String alfabeto, boolean restar){
-   
-   int cola = texto.length() % clave.length();
-   int divisionEntera = texto.length() / clave.length();
-   
+      
    int[] claveNumerica = codificacionNumerica(clave, alfabeto);
    int[] nuevaClaveNumerica = new int[claveNumerica.length];
    if(restar){
@@ -106,7 +103,7 @@ public int sumaModuloX(int a, int b, int mod){
 public String codificacionTexto(int[] original, String alfabeto){
   //no tiene en cuenta si alguna palabra no esta en el alfabeto, se da por supuesto.
   String resultado = "";
-  int index = 0;
+
   for (int e: original){
     int contador = 0;
     for (char letra: alfabeto.toCharArray()){

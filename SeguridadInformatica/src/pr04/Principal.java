@@ -34,12 +34,12 @@ public class Principal {
 
 		int distancia = calcularHamming(listaPalabrasCodigo);
 
-		/*
+		
 		System.out.println("Numero de palabras: " + listaPalabrasCodigo.length + "\nCon un tamaño de palabra de "
 				+ listaPalabrasCodigo[0].length);
 
 		System.out.println("M.D.H. " + distancia);
-		*/
+		
 		return distancia;
 
 	}
