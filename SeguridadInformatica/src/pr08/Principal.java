@@ -113,14 +113,14 @@ public class Principal {
 		return m.get(b.size());
 	}
 
-	private BigInteger obtenerClavePrivada(BigInteger e, BigInteger factorn1, BigInteger factorn2) {
+	public BigInteger obtenerClavePrivada(BigInteger e, BigInteger factorn1, BigInteger factorn2) {
 
 		BigInteger phi = factorn1.subtract(new BigInteger("1")).multiply(factorn2.subtract(new BigInteger("1")));
 
 		return euclidesExtendido(e, phi);
 	}
 
-	private BigInteger descifrarRSA(BigInteger mensajeADescifrar, BigInteger e, BigInteger n, BigInteger factorn1,
+	public BigInteger descifrarRSA(BigInteger mensajeADescifrar, BigInteger e, BigInteger n, BigInteger factorn1,
 			BigInteger factorn2) {
 
 		BigInteger solucion;
@@ -136,7 +136,6 @@ public class Principal {
 		BigInteger[] solucion;
 
 		ArrayList<BigInteger> restos = new ArrayList<BigInteger>();
-
 		BigInteger resto;
 		BigInteger cociente = expresion;
 		do {
@@ -148,7 +147,6 @@ public class Principal {
 		} while (cociente.compareTo(base) != -1);
 
 		restos.add(cociente);
-
 		solucion = new BigInteger[restos.size()];
 
 		for (int i = 0; i < restos.size(); i++) {
