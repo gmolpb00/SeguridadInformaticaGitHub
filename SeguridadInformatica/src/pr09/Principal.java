@@ -78,7 +78,7 @@ public class Principal {
 
 		int[] aux = new int[k];
 
-		BigInteger m = new BigInteger("0");
+		BigInteger c = new BigInteger("0");
 		int index = 0;
 
 		for (int i = 0; i < textoCodificado.length; i++) {
@@ -87,7 +87,7 @@ public class Principal {
 
 			if ((i % k) == (k - 1)) {
 
-				m = new BigInteger("0");
+				c = new BigInteger("0");
 
 				for (int j = 0; j < k; j++) {
 
@@ -96,11 +96,11 @@ public class Principal {
 									new BigInteger(String.valueOf(k - j - 1)), n)
 							.multiply(new BigInteger(String.valueOf(aux[j])));
 
-					m = m.add(x);
+					c = c.add(x);
 
 				}
 
-				solucion[index] = m;
+				solucion[index] = c;
 				index++;
 			}
 		}
