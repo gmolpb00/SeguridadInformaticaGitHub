@@ -30,6 +30,8 @@ public class Interfaz extends JFrame {
 	private JTextField textoEntropia;
 	private JTextField matrizRedundancia;
 	private JTextField vectorPrivado;
+	private JTextField textoNumeropalabras;
+	private JTextField textField_1;
 
 	/**
 	 * Launch the application.
@@ -54,7 +56,7 @@ public class Interfaz extends JFrame {
 		setBackground(UIManager.getColor("CheckBoxMenuItem.acceleratorForeground"));
 		setTitle("Simulador canal ");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 900, 600);
+		setBounds(100, 100, 1100, 700);
 		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBackground(UIManager.getColor("CheckBoxMenuItem.selectionBackground"));
@@ -194,7 +196,7 @@ public class Interfaz extends JFrame {
 		
 		JPanel panel_derecho_izq = new JPanel();
 		panel_derecho.add(panel_derecho_izq, BorderLayout.WEST);
-		panel_derecho_izq.setLayout(new BorderLayout(0, 0));
+		panel_derecho_izq.setLayout(new BorderLayout(8, 8));
 		
 		JLabel lblNewLabel_1 = new JLabel("Texto salida");
 		panel_derecho_izq.add(lblNewLabel_1, BorderLayout.NORTH);
@@ -209,6 +211,29 @@ public class Interfaz extends JFrame {
 		
 		JPanel panel_detalles = new JPanel();
 		panel_derecho_izq.add(panel_detalles, BorderLayout.SOUTH);
+		panel_detalles.setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel_1 = new JPanel();
+		panel_detalles.add(panel_1, BorderLayout.NORTH);
+		
+		JLabel lblNumeroPalabras = new JLabel("Numero palabras");
+		panel_1.add(lblNumeroPalabras);
+		
+		textoNumeropalabras = new JTextField();
+		textoNumeropalabras.setEditable(false);
+		textoNumeropalabras.setColumns(10);
+		panel_1.add(textoNumeropalabras);
+		
+		JPanel panel_2 = new JPanel();
+		panel_detalles.add(panel_2);
+		
+		JLabel lblNumeroerrores = new JLabel("Numero de errores");
+		panel_2.add(lblNumeroerrores);
+		
+		textField_1 = new JTextField();
+		textField_1.setEditable(false);
+		textField_1.setColumns(10);
+		panel_2.add(textField_1);
 		
 		JPanel panel_derecho_der = new JPanel();
 		panel_derecho.add(panel_derecho_der, BorderLayout.EAST);
