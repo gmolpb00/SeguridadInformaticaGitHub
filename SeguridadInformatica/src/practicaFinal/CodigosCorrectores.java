@@ -71,10 +71,10 @@ public class CodigosCorrectores {
 		int valorRandom;
 
 		for (int i = 0; i < codigoLimpio.length; i++) {
-			porcentajeRandom = (int) Math.random() * 100;
+			porcentajeRandom = (int) (Math.random() * 100);
 
 			if (porcentajeRandom < porcentajeRuido) {
-				valorRandom = (int) Math.random() * q;
+				valorRandom = (int) (Math.random() * q);
 				solucion[i] = valorRandom;
 			} else {
 				solucion[i] = codigoLimpio[i];
