@@ -106,7 +106,8 @@ public class Interfaz extends JFrame {
 		JLabel dfslfabeto = new JLabel("Alfabeto");
 		panel_3.add(dfslfabeto);
 
-		textoAlfabeto = new JTextField("abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZáéíóúÁÉÍÓÚ0123456789 ,.:-¿?()");
+		textoAlfabeto = new JTextField(
+				"abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZáéíóúÁÉÍÓÚ0123456789 ,.:-¿?()");
 		panel_3.add(textoAlfabeto);
 		textoAlfabeto.setColumns(10);
 
@@ -203,7 +204,7 @@ public class Interfaz extends JFrame {
 		JLabel lblNewLabel_4 = new JLabel("N  ");
 		panel_5.add(lblNewLabel_4);
 
-		textoN = new JTextField("123");
+		textoN = new JTextField("62439738695706104201747");
 		panel_5.add(textoN);
 		textoN.setColumns(10);
 
@@ -213,7 +214,7 @@ public class Interfaz extends JFrame {
 		JLabel E = new JLabel("E");
 		panel_6.add(E);
 
-		textoE = new JTextField("123");
+		textoE = new JTextField("356812573");
 		panel_6.add(textoE);
 		textoE.setColumns(10);
 
@@ -227,7 +228,7 @@ public class Interfaz extends JFrame {
 		JLabel lblFactor = new JLabel("Factor 1");
 		panel_8.add(lblFactor);
 
-		textoFactor1 = new JTextField("123");
+		textoFactor1 = new JTextField("249879448303");
 		textoFactor1.setColumns(10);
 		panel_8.add(textoFactor1);
 
@@ -237,7 +238,7 @@ public class Interfaz extends JFrame {
 		JLabel lblFactor_1 = new JLabel("Factor 2");
 		panel_9.add(lblFactor_1);
 
-		textoFactor2 = new JTextField("123");
+		textoFactor2 = new JTextField("249879448349");
 		textoFactor2.setColumns(10);
 		panel_9.add(textoFactor2);
 
@@ -342,10 +343,10 @@ public class Interfaz extends JFrame {
 				int porcentajeRuido = 0;
 				int[][] matrizA = null;
 				String claveCifrado = null;
-				BigInteger nValor;
-				BigInteger eValor;
-				BigInteger factorn1Valor;
-				BigInteger factorn2Valor;
+				BigInteger nValor = null;
+				BigInteger eValor = null;
+				BigInteger factorn1Valor = null;
+				BigInteger factorn2Valor = null;
 
 				try {
 
@@ -365,19 +366,40 @@ public class Interfaz extends JFrame {
 
 				String mensajeEnClaro = textoEntrada.getText();
 
-				//String cifradoSinRuidoPrevio = vigenere.cifrarMensajeEnClaro(mensajeEnClaro, alf, claveCifrado);
-				// String cifradoSinRuido = rsa.codificarRSA(mensajeEnClaro, eValor, nValor);
+				boolean esPrivado = togleEleccion.isSelected();
 
-				int[] cifradoConRuido = codigosCorrectores.codificarConRuido(mensajeEnClaro, alf, matrizA, 2,
+				String cifradoSinRuidoPrevio = "";
+
+				if (esPrivado) {
+					cifradoSinRuidoPrevio = vigenere.cifrarMensajeEnClaro(mensajeEnClaro, alf, claveCifrado);
+				} else {
+					cifradoSinRuidoPrevio = rsa.codificarRSABloque(mensajeEnClaro, alf, eValor, nValor);
+				}
+
+				int[] cifradoConRuido = codigosCorrectores.codificarConRuido(cifradoSinRuidoPrevio, alf, matrizA, 2,
 						porcentajeRuido);
-				
-				String cifradoSinRuidoPosterior = codigosCorrectores.descodificarConRuido(cifradoConRuido, alf, matrizA, 2);
-				
-				//String mensajeDescifrado = vigenere.descifrarClaveCifrado(cifradoSinRuidoPosterior, alf, claveCifrado);
 
-				System.out.println(cifradoSinRuidoPosterior);
-				//////////////////////////////////////// 7/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+				String cifradoSinRuidoPosterior = codigosCorrectores.descodificarConRuido(cifradoConRuido, alf, matrizA,
+						2);
 
+				String mensajeDescifrado = "";
+
+				if (esPrivado) {
+					mensajeDescifrado = vigenere.descifrarClaveCifrado(cifradoSinRuidoPosterior, alf, claveCifrado);
+				} else {
+					mensajeDescifrado = rsa.descodificarRSABloque(cifradoSinRuidoPosterior, alf, eValor, nValor,
+							factorn1Valor, factorn2Valor);
+				}
+				System.out.println(mensajeDescifrado);
+
+				textoSalida.setText(mensajeDescifrado);
+				codigoArreglado.setText(cifradoSinRuidoPosterior);
+
+				String aux = "";
+				for (int x : cifradoConRuido) {
+					aux += String.valueOf(x);
+				}
+				codigoSinArreglar.setText(cifradoSinRuidoPrevio);
 			}
 		});
 		botonEmpezar.setBackground(new Color(143, 188, 143));
@@ -408,55 +430,39 @@ public class Interfaz extends JFrame {
 
 		}
 	}
-	
+
 	public int[][] stringADobleArray(String original) {
-		
+
 		original = original.replace("[", "");
 		original = original.replace(" ", "");
-		int filas = (int) (original.chars().filter(ch -> ch == ']').count() -1);
-		int columnas = (int) ((original.chars().filter(ch -> ch == ',').count() + 1)/filas);
+		int filas = (int) (original.chars().filter(ch -> ch == ']').count() - 1);
+		int columnas = (int) ((original.chars().filter(ch -> ch == ',').count() + 1) / filas);
 
 		original = original.replace("]", "");
 
 		int[][] resultado = new int[filas][columnas];
-				
+
 		String[] tokens = original.split(",");
-		
-		
-		for(int i=0; i<resultado.length; i++) {
-			for(int j=0; j<resultado[i].length; j++) {
-				resultado[i][j] = Integer.valueOf(tokens[i*j+j]);
+
+		for (int i = 0; i < resultado.length; i++) {
+			for (int j = 0; j < resultado[i].length; j++) {
+				resultado[i][j] = Integer.valueOf(tokens[i * j + j]);
 			}
 		}
-			
-		
-		return resultado;		
+
+		return resultado;
 		/*
-		StringBuilder avanzado = new StringBuilder(original);
-		long count = original.chars().filter(ch -> ch == '[').count();
-		int contador = 0;
-		for (int o = 0; o < original.length(); o++) {
-			if (original.charAt(0) != '[' && original.charAt(0) != ']')
-				contador++;
-			if (original.charAt(0) == ']') {
-				break;
-			}
-		}
-		char e = ' ';
-		String nuevo = original.replace('[', e);
-		System.out.println(count);System.out.println(contador);
-		int[][] resultado = new int[(int) count - 1][contador];
-		int indice = 0;
-		for (int i = 0; i < (int) count - 1; i++) {
-			for (int j = 0; j < contador; j++) {
-				while (nuevo.charAt(indice) == ' ') {
-					indice++;
-				}
-				resultado[i][j] = nuevo.charAt(indice);
-				System.out.println("a");
-				indice++;
-			}
-		}
-		return resultado;*/
+		 * StringBuilder avanzado = new StringBuilder(original); long count =
+		 * original.chars().filter(ch -> ch == '[').count(); int contador = 0; for (int
+		 * o = 0; o < original.length(); o++) { if (original.charAt(0) != '[' &&
+		 * original.charAt(0) != ']') contador++; if (original.charAt(0) == ']') {
+		 * break; } } char e = ' '; String nuevo = original.replace('[', e);
+		 * System.out.println(count);System.out.println(contador); int[][] resultado =
+		 * new int[(int) count - 1][contador]; int indice = 0; for (int i = 0; i < (int)
+		 * count - 1; i++) { for (int j = 0; j < contador; j++) { while
+		 * (nuevo.charAt(indice) == ' ') { indice++; } resultado[i][j] =
+		 * nuevo.charAt(indice); System.out.println("a"); indice++; } } return
+		 * resultado;
+		 */
 	}
 }

@@ -70,6 +70,8 @@ public class CodigosCorrectores {
 		int porcentajeRandom;
 		int valorRandom;
 
+		porcentajeRuido = (int) (porcentajeRuido*0.2);
+		System.out.println(porcentajeRuido);
 		for (int i = 0; i < codigoLimpio.length; i++) {
 			porcentajeRandom = (int) (Math.random() * 100);
 
@@ -100,8 +102,12 @@ public class CodigosCorrectores {
 			if (i % longitudSimbolos == longitudSimbolos - 1) {
 				for (int j = 0; j < simbolosCodificados.length; j++) {
 					if (Arrays.equals(aux, simbolosCodificados[j])) {
-						resultado += alf.charAt(j);
-						break;
+						if (j >= alf.length()) {
+							resultado += alf.charAt((int) (Math.random() * alf.length()));
+						} else {
+							resultado += alf.charAt(j);
+							break;
+						}
 					}
 				}
 			}
@@ -137,10 +143,12 @@ public class CodigosCorrectores {
 			String[] sindromeCodigos) {
 
 		int[][] resultado = new int[sindromeCodigos.length][tablaSindromesIncompleta
-		                                                    .get(tablaSindromesIncompleta.keySet().toArray()[0]).length];
+				.get(tablaSindromesIncompleta.keySet().toArray()[0]).length];
 
 		for (int i = 0; i < sindromeCodigos.length; i++) {
-			resultado[i] = tablaSindromesIncompleta.get(sindromeCodigos[i]);
+			if (tablaSindromesIncompleta.containsKey(sindromeCodigos[i])) {
+				resultado[i] = tablaSindromesIncompleta.get(sindromeCodigos[i]);
+			}
 		}
 		return resultado;
 	}
@@ -269,8 +277,11 @@ public class CodigosCorrectores {
 
 		for (int i = 0; i < resultado.length; i++) {
 			for (int j = 0; j < resultado[0].length; j++) {
+
 				int temp = codificacion[i][j] - erroresPatron[i][j];
+
 				resultado[i][j] = (temp > 0) ? temp : (qario + temp) % qario;
+
 			}
 		}
 
