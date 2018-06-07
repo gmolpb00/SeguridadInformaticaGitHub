@@ -4,6 +4,10 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -22,6 +26,9 @@ import javax.swing.JToggleButton;
 import javax.swing.JButton;
 import java.awt.Color;
 import javax.swing.SwingConstants;
+import java.awt.Font;
+import java.awt.Component;
+import javax.swing.Box;
 
 public class Interfaz extends JFrame {
 
@@ -32,7 +39,15 @@ public class Interfaz extends JFrame {
 	private JTextField vectorPrivado;
 	private JTextField textoNumeropalabras;
 	private JTextField textField_1;
-
+	private JTextField textoN;
+	private JTextField textoE;
+	public String rsa = "rsa";
+	public String rsaBloques =  "rsa por bloques";
+	private boolean flagPublico = true;
+	public JToggleButton togleEleccion;
+	public JPanel datosPublicaRSABloques;
+	public JPanel datosPublicaRSA;
+	protected JTextArea textoEntrada;
 	/**
 	 * Launch the application.
 	 */
@@ -41,7 +56,11 @@ public class Interfaz extends JFrame {
 			public void run() {
 				try {
 					Interfaz frame = new Interfaz();
+					
 					frame.setVisible(true);
+					frame.togleEleccion.doClick();
+					frame.datosPublicaRSA.setVisible(false);
+					frame.datosPublicaRSABloques.setVisible(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -88,7 +107,7 @@ public class Interfaz extends JFrame {
 		panel_3.add(textField);
 		textField.setColumns(10);
 		
-		JTextArea textoEntrada = new JTextArea();
+		textoEntrada = new JTextArea();
 		JScrollPane scrollpaneR = new JScrollPane(textoEntrada);
 		textoEntrada.setColumns(10);
 		textoEntrada.setBackground(UIManager.getColor("Tree.selectionBackground"));
@@ -112,6 +131,9 @@ public class Interfaz extends JFrame {
 		contentPane.add(panel_central, BorderLayout.CENTER);
 		panel_central.setLayout(new BorderLayout(20, 0));
 		
+		Component rigidArea = Box.createRigidArea(new Dimension(20, 30));
+		panel_central.add(rigidArea, BorderLayout.SOUTH);
+		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		panel_central.add(tabbedPane, BorderLayout.CENTER);
 		
@@ -120,10 +142,13 @@ public class Interfaz extends JFrame {
 		panel_ruido.setLayout(new BorderLayout(5, 5));
 		
 		JLabel lblNewLabel_2 = new JLabel("Elige el % de ruido a simular");
+		//lblNewLabel_2.setLocation(5, 15);
+		lblNewLabel_2.setFont(new Font("DejaVu Sans", Font.PLAIN, 14));
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_ruido.add(lblNewLabel_2, BorderLayout.NORTH);
 		
 		JSlider ruido = new JSlider();
+		ruido.setOrientation(SwingConstants.VERTICAL);
 		panel_ruido.add(ruido, BorderLayout.CENTER);
 		ruido.setValue(10);
 		ruido.setMaximum(100);
@@ -147,7 +172,7 @@ public class Interfaz extends JFrame {
 		
 		JPanel privado = new JPanel();
 		panel_cifrado.add(privado, BorderLayout.SOUTH);
-		privado.setLayout(new BorderLayout(0, 0));
+		privado.setLayout(new BorderLayout(0, 20));
 		
 		JLabel lblNewLabel_6 = new JLabel("Vector codificacion");
 		privado.add(lblNewLabel_6, BorderLayout.NORTH);
@@ -165,20 +190,57 @@ public class Interfaz extends JFrame {
 		
 		JLabel lblNewLabel_5 = new JLabel("Elige cifrado publico");
 		panel.add(lblNewLabel_5);
-		
-		JComboBox seleccionCifradoPublico = new JComboBox();
+		datosPublicaRSA = new JPanel();
+		datosPublicaRSABloques = new JPanel();
+
+		JComboBox<String> seleccionCifradoPublico = new JComboBox();
+		seleccionCifradoPublico.addItem(rsa);
+		seleccionCifradoPublico.addItem(rsaBloques);
+		seleccionCifradoPublico.addItemListener(new ItemListener() {
+			
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				if (rsa == e.getItem()) {
+					datosPublicaRSA.setVisible(true);
+					datosPublicaRSABloques.setVisible(false);
+
+				}else if(rsaBloques == e.getItem()){
+					datosPublicaRSABloques.setVisible(true);
+					datosPublicaRSA.setVisible(false);
+				}
+				
+			}
+		});
 		panel.add(seleccionCifradoPublico);
 		
-		JPanel datosPublicaRSA = new JPanel();
-		datosPublicaRSA.setVisible(false);
 		publico.add(datosPublicaRSA, BorderLayout.CENTER);
+		datosPublicaRSA.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel_7 = new JLabel("Datos:");
-		datosPublicaRSA.add(lblNewLabel_7);
+		datosPublicaRSA.add(lblNewLabel_7, BorderLayout.NORTH);
 		
-		JPanel datosPublicaRSABloques = new JPanel();
-		datosPublicaRSABloques.setVisible(false);
-		publico.add(datosPublicaRSABloques);
+		JPanel panel_5 = new JPanel();
+		datosPublicaRSA.add(panel_5, BorderLayout.CENTER);
+		
+		JLabel lblNewLabel_4 = new JLabel("N  ");
+		panel_5.add(lblNewLabel_4);
+		
+		textoN = new JTextField();
+		panel_5.add(textoN);
+		textoN.setColumns(10);
+		
+		JPanel panel_6 = new JPanel();
+		datosPublicaRSA.add(panel_6, BorderLayout.SOUTH);
+		
+		JLabel E = new JLabel("E");
+		panel_6.add(E);
+		
+		textoE = new JTextField();
+		panel_6.add(textoE);
+		textoE.setColumns(10);
+		
+		publico.add(datosPublicaRSABloques, BorderLayout.SOUTH);
+		datosPublicaRSABloques.setLayout(new BorderLayout(0, 0));
 		
 		JLabel label = new JLabel("Datos:");
 		datosPublicaRSABloques.add(label);
@@ -186,8 +248,18 @@ public class Interfaz extends JFrame {
 		JPanel eleccionCifrado = new JPanel();
 		panel_cifrado.add(eleccionCifrado, BorderLayout.NORTH);
 		
-		JToggleButton togleEleccion = new JToggleButton("Publico / privado");
+		togleEleccion = new JToggleButton("Publico / privado");
 		eleccionCifrado.add(togleEleccion);
+		togleEleccion.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				privado.setVisible(flagPublico);
+				publico.setVisible(!flagPublico);
+				flagPublico = !flagPublico;
+			}
+		});
+		
 		
 		JPanel panel_derecho = new JPanel();
 		panel_derecho.setBorder(new EmptyBorder(0, 10, 0, 10));
@@ -253,6 +325,7 @@ public class Interfaz extends JFrame {
 		
 		JTextArea codigoArreglado = new JTextArea();
 		JScrollPane scrollpanA = new JScrollPane(codigoArreglado);
+		scrollpanA.setViewportBorder(new EmptyBorder(0, 0, 15, 0));
 
 		codigoArreglado.setEditable(false);
 		codigoArreglado.setBackground(UIManager.getColor("Button.focus"));
