@@ -141,7 +141,7 @@ public class CodigosCorrectores {
 			String[] sindromeCodigos) {
 
 		int[][] resultado = new int[sindromeCodigos.length][tablaSindromesIncompleta
-				.get(tablaSindromesIncompleta.keySet().toArray()[0]).length];
+		                                                    .get(tablaSindromesIncompleta.keySet().toArray()[0]).length];
 
 		for (int i = 0; i < sindromeCodigos.length; i++) {
 			resultado[i] = tablaSindromesIncompleta.get(sindromeCodigos[i]);
