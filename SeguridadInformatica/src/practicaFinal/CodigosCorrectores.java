@@ -71,6 +71,7 @@ public class CodigosCorrectores {
 		int valorRandom;
 
 		porcentajeRuido = (int) (porcentajeRuido*0.2);
+		
 		System.out.println(porcentajeRuido);
 		for (int i = 0; i < codigoLimpio.length; i++) {
 			porcentajeRandom = (int) (Math.random() * 100);
@@ -117,7 +118,7 @@ public class CodigosCorrectores {
 
 	private int[] codificarTexto(String palabras, String alf, int qario) {
 
-		int longitudSimbolos = (int) Math.ceil((Math.log(alf.length()) / Math.log(2)));
+		int longitudSimbolos = (int) Math.ceil((Math.log(alf.length()) / Math.log(qario)));
 
 		int[][] simbolosCodificados = rellenarVector(qario, longitudSimbolos);
 

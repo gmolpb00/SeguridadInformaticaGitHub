@@ -84,7 +84,7 @@ public class Interfaz extends JFrame {
 		menuBar.setBackground(UIManager.getColor("CheckBoxMenuItem.selectionBackground"));
 		setJMenuBar(menuBar);
 
-		JMenuItem botonLimpiar = new JMenuItem("limpiar");
+		JMenuItem botonLimpiar = new JMenuItem("  Limpiar");
 
 		botonLimpiar.setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
 		menuBar.add(botonLimpiar);
@@ -100,7 +100,10 @@ public class Interfaz extends JFrame {
 		contentPane.add(panel_izquierdo, BorderLayout.WEST);
 		panel_izquierdo.setLayout(new BorderLayout(10, 0));
 
-		textoEntrada = new JTextArea("patata? 123456");
+		textoEntrada = new JTextArea(
+				"Puedo escribir los versos más tristes esta noche. Yo la quise, y a veces ella también me quiso. En las noches como ésta la tuve entre mis brazos. La besé tantas veces bajo el cielo infinito.");
+		textoEntrada.setLineWrap(true);
+
 		JScrollPane scrollpaneR = new JScrollPane(textoEntrada);
 		textoEntrada.setColumns(12);
 		textoEntrada.setBackground(UIManager.getColor("Tree.selectionBackground"));
@@ -118,33 +121,33 @@ public class Interfaz extends JFrame {
 		textoEntropia.setEditable(false);
 		panel_4.add(textoEntropia);
 		textoEntropia.setColumns(10);
-								
-								JPanel panel_10 = new JPanel();
-								panel_izquierdo.add(panel_10, BorderLayout.NORTH);
-								panel_10.setLayout(new BorderLayout(0, 0));
-										
-										JPanel panel_11 = new JPanel();
-										panel_10.add(panel_11, BorderLayout.SOUTH);
-										panel_11.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-										
-										JLabel lblQ = new JLabel("           Q");
-										panel_11.add(lblQ);
-										
-										textoQ = new JTextField("");
-										textoQ.setColumns(10);
-										panel_11.add(textoQ);
-								
-										JPanel panel_3 = new JPanel();
-										panel_10.add(panel_3);
-										panel_3.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-										
-												JLabel dfslfabeto = new JLabel("Alfabeto");
-												panel_3.add(dfslfabeto);
-												
-														textoAlfabeto = new JTextField(
-																"abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZáéíóúÁÉÍÓÚ0123456789 ,.:-¿?()");
-														panel_3.add(textoAlfabeto);
-														textoAlfabeto.setColumns(10);
+
+		JPanel panel_10 = new JPanel();
+		panel_izquierdo.add(panel_10, BorderLayout.NORTH);
+		panel_10.setLayout(new BorderLayout(0, 0));
+
+		JPanel panel_11 = new JPanel();
+		panel_10.add(panel_11, BorderLayout.SOUTH);
+		panel_11.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+
+		JLabel lblQ = new JLabel("           Q");
+		panel_11.add(lblQ);
+
+		textoQ = new JTextField("");
+		textoQ.setColumns(10);
+		panel_11.add(textoQ);
+
+		JPanel panel_3 = new JPanel();
+		panel_10.add(panel_3);
+		panel_3.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+
+		JLabel dfslfabeto = new JLabel("Alfabeto");
+		panel_3.add(dfslfabeto);
+
+		textoAlfabeto = new JTextField(
+				"abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZáéíóúÁÉÍÓÚ0123456789 ,.:-¿?()");
+		panel_3.add(textoAlfabeto);
+		textoAlfabeto.setColumns(10);
 
 		JPanel panel_central = new JPanel();
 		panel_central.setBorder(new EmptyBorder(0, 10, 0, 10));
@@ -286,6 +289,7 @@ public class Interfaz extends JFrame {
 		panel_derecho_izq.add(lblNewLabel_1, BorderLayout.NORTH);
 
 		JTextArea textoSalida = new JTextArea(20, 8);
+		textoSalida.setLineWrap(true);
 		JScrollPane scrollpanea = new JScrollPane(textoSalida);
 
 		textoSalida.setBackground(UIManager.getColor("Tree.selectionBackground"));
@@ -327,6 +331,7 @@ public class Interfaz extends JFrame {
 		panel_derecho_der.add(lblNewLabel_8, BorderLayout.NORTH);
 
 		JTextArea codigoSinArreglar = new JTextArea();
+		codigoSinArreglar.setLineWrap(true);
 		JScrollPane scrollpan = new JScrollPane(codigoSinArreglar);
 
 		codigoSinArreglar.setBackground(UIManager.getColor("Button.focus"));
@@ -336,6 +341,7 @@ public class Interfaz extends JFrame {
 		panel_derecho_der.add(scrollpan, BorderLayout.CENTER);
 
 		JTextArea codigoArreglado = new JTextArea();
+		codigoArreglado.setLineWrap(true);
 		JScrollPane scrollpanA = new JScrollPane(codigoArreglado);
 		scrollpanA.setViewportBorder(new EmptyBorder(0, 0, 15, 0));
 
@@ -356,6 +362,7 @@ public class Interfaz extends JFrame {
 				CodigosCorrectores codigosCorrectores = new CodigosCorrectores();
 
 				String alf = null;
+				int qValor = 0;
 				int porcentajeRuido = 0;
 				int[][] matrizA = null;
 				String claveCifrado = null;
@@ -367,6 +374,7 @@ public class Interfaz extends JFrame {
 				try {
 
 					alf = textoAlfabeto.getText();
+					qValor = Integer.parseInt(textoQ.getText());
 					porcentajeRuido = ruido.getValue();
 					matrizA = stringADobleArray(matrizRedundancia.getText());
 					claveCifrado = clavePrivado.getText();
@@ -392,11 +400,11 @@ public class Interfaz extends JFrame {
 					cifradoSinRuidoPrevio = rsa.codificarRSABloque(mensajeEnClaro, alf, eValor, nValor);
 				}
 
-				int[] cifradoConRuido = codigosCorrectores.codificarConRuido(cifradoSinRuidoPrevio, alf, matrizA, 2,
-						porcentajeRuido);
+				int[] cifradoConRuido = codigosCorrectores.codificarConRuido(cifradoSinRuidoPrevio, alf, matrizA,
+						qValor, porcentajeRuido);
 
 				String cifradoSinRuidoPosterior = codigosCorrectores.descodificarConRuido(cifradoConRuido, alf, matrizA,
-						2);
+						qValor);
 
 				String mensajeDescifrado = "";
 
@@ -410,12 +418,18 @@ public class Interfaz extends JFrame {
 
 				textoSalida.setText(mensajeDescifrado);
 				codigoArreglado.setText(cifradoSinRuidoPosterior);
-
-				String aux = "";
-				for (int x : cifradoConRuido) {
-					aux += String.valueOf(x);
-				}
 				codigoSinArreglar.setText(cifradoSinRuidoPrevio);
+
+				textoNumeropalabras.setText(String.valueOf(cifradoSinRuidoPrevio.length()));
+
+				int contador = 0;
+				for (int i = 0; i < cifradoSinRuidoPrevio.length(); i++) {
+					if (cifradoSinRuidoPrevio.charAt(i) != cifradoSinRuidoPosterior.charAt(i)) {
+						contador++;
+					}
+				}
+
+				textField_1.setText(String.valueOf(contador));
 			}
 		});
 		botonEmpezar.setBackground(new Color(143, 188, 143));
