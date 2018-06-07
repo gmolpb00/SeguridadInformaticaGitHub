@@ -36,7 +36,7 @@ public class Interfaz extends JFrame {
 	private JTextField textField;
 	private JTextField textoEntropia;
 	private JTextField matrizRedundancia;
-	private JTextField vectorPrivado;
+	private JTextField clavePrivado;
 	private JTextField textoNumeropalabras;
 	private JTextField textField_1;
 	private JTextField textoN;
@@ -45,9 +45,10 @@ public class Interfaz extends JFrame {
 	public String rsaBloques =  "rsa por bloques";
 	private boolean flagPublico = true;
 	public JToggleButton togleEleccion;
-	public JPanel datosPublicaRSABloques;
 	public JPanel datosPublicaRSA;
 	protected JTextArea textoEntrada;
+	private JTextField textoFactor1;
+	private JTextField textoFactor2;
 	/**
 	 * Launch the application.
 	 */
@@ -60,7 +61,6 @@ public class Interfaz extends JFrame {
 					frame.setVisible(true);
 					frame.togleEleccion.doClick();
 					frame.datosPublicaRSA.setVisible(false);
-					frame.datosPublicaRSABloques.setVisible(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -93,7 +93,7 @@ public class Interfaz extends JFrame {
 		
 		JPanel panel_izquierdo = new JPanel();
 		panel_izquierdo.setBorder(new EmptyBorder(0, 10, 0, 10));
-		panel_izquierdo.setMaximumSize(new Dimension(300, 600));
+		panel_izquierdo.setMaximumSize(new Dimension(500, 600));
 		contentPane.add(panel_izquierdo, BorderLayout.WEST);
 		panel_izquierdo.setLayout(new BorderLayout(10, 0));
 		
@@ -110,7 +110,7 @@ public class Interfaz extends JFrame {
 		
 		textoEntrada = new JTextArea();
 		JScrollPane scrollpaneR = new JScrollPane(textoEntrada);
-		textoEntrada.setColumns(10);
+		textoEntrada.setColumns(12);
 		textoEntrada.setBackground(UIManager.getColor("Tree.selectionBackground"));
 		textoEntrada.setRows(8);
 		
@@ -175,53 +175,29 @@ public class Interfaz extends JFrame {
 		panel_cifrado.add(privado, BorderLayout.SOUTH);
 		privado.setLayout(new BorderLayout(0, 20));
 		
-		JLabel lblNewLabel_6 = new JLabel("Vector codificacion");
+		JLabel lblNewLabel_6 = new JLabel("Clave codificacion");
 		privado.add(lblNewLabel_6, BorderLayout.NORTH);
 		
-		vectorPrivado = new JTextField();
-		privado.add(vectorPrivado, BorderLayout.SOUTH);
-		vectorPrivado.setColumns(10);
+		clavePrivado = new JTextField();
+		privado.add(clavePrivado, BorderLayout.SOUTH);
+		clavePrivado.setColumns(10);
 		
 		JPanel publico = new JPanel();
 		panel_cifrado.add(publico, BorderLayout.CENTER);
 		publico.setLayout(new BorderLayout(0, 0));
-		
-		JPanel panel = new JPanel();
-		publico.add(panel, BorderLayout.NORTH);
-		
-		JLabel lblNewLabel_5 = new JLabel("Elige cifrado publico");
-		panel.add(lblNewLabel_5);
 		datosPublicaRSA = new JPanel();
-		datosPublicaRSABloques = new JPanel();
-
-		JComboBox<String> seleccionCifradoPublico = new JComboBox();
-		seleccionCifradoPublico.addItem(rsa);
-		seleccionCifradoPublico.addItem(rsaBloques);
-		seleccionCifradoPublico.addItemListener(new ItemListener() {
-			
-			@Override
-			public void itemStateChanged(ItemEvent e) {
-				if (rsa == e.getItem()) {
-					datosPublicaRSA.setVisible(true);
-					datosPublicaRSABloques.setVisible(false);
-
-				}else if(rsaBloques == e.getItem()){
-					datosPublicaRSABloques.setVisible(true);
-					datosPublicaRSA.setVisible(false);
-				}
-				
-			}
-		});
-		panel.add(seleccionCifradoPublico);
 		
 		publico.add(datosPublicaRSA, BorderLayout.CENTER);
 		datosPublicaRSA.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblNewLabel_7 = new JLabel("Datos:");
+		JLabel lblNewLabel_7 = new JLabel("Datos RSA en bloques:");
 		datosPublicaRSA.add(lblNewLabel_7, BorderLayout.NORTH);
 		
+		JPanel panel = new JPanel();
+		datosPublicaRSA.add(panel, BorderLayout.NORTH);
+		
 		JPanel panel_5 = new JPanel();
-		datosPublicaRSA.add(panel_5, BorderLayout.CENTER);
+		panel.add(panel_5);
 		
 		JLabel lblNewLabel_4 = new JLabel("N  ");
 		panel_5.add(lblNewLabel_4);
@@ -231,7 +207,7 @@ public class Interfaz extends JFrame {
 		textoN.setColumns(10);
 		
 		JPanel panel_6 = new JPanel();
-		datosPublicaRSA.add(panel_6, BorderLayout.SOUTH);
+		panel.add(panel_6);
 		
 		JLabel E = new JLabel("E");
 		panel_6.add(E);
@@ -240,11 +216,29 @@ public class Interfaz extends JFrame {
 		panel_6.add(textoE);
 		textoE.setColumns(10);
 		
-		publico.add(datosPublicaRSABloques, BorderLayout.SOUTH);
-		datosPublicaRSABloques.setLayout(new BorderLayout(0, 0));
+		JPanel panel_7 = new JPanel();
+		datosPublicaRSA.add(panel_7, BorderLayout.CENTER);
+		panel_7.setLayout(new BorderLayout(0, 0));
 		
-		JLabel label = new JLabel("Datos:");
-		datosPublicaRSABloques.add(label);
+		JPanel panel_8 = new JPanel();
+		panel_7.add(panel_8, BorderLayout.NORTH);
+		
+		JLabel lblFactor = new JLabel("Factor 1");
+		panel_8.add(lblFactor);
+		
+		textoFactor1 = new JTextField();
+		textoFactor1.setColumns(10);
+		panel_8.add(textoFactor1);
+		
+		JPanel panel_9 = new JPanel();
+		panel_7.add(panel_9);
+		
+		JLabel lblFactor_1 = new JLabel("Factor 2");
+		panel_9.add(lblFactor_1);
+		
+		textoFactor2 = new JTextField();
+		textoFactor2.setColumns(10);
+		panel_9.add(textoFactor2);
 		
 		JPanel eleccionCifrado = new JPanel();
 		panel_cifrado.add(eleccionCifrado, BorderLayout.NORTH);
