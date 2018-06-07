@@ -33,7 +33,7 @@ import javax.swing.Box;
 public class Interfaz extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField textoAlfabeto;
 	private JTextField textoEntropia;
 	private JTextField matrizRedundancia;
 	private JTextField clavePrivado;
@@ -49,6 +49,7 @@ public class Interfaz extends JFrame {
 	protected JTextArea textoEntrada;
 	private JTextField textoFactor1;
 	private JTextField textoFactor2;
+	public JPanel publico;
 	/**
 	 * Launch the application.
 	 */
@@ -60,7 +61,7 @@ public class Interfaz extends JFrame {
 					
 					frame.setVisible(true);
 					frame.togleEleccion.doClick();
-					frame.datosPublicaRSA.setVisible(false);
+					frame.publico.setVisible(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -104,9 +105,9 @@ public class Interfaz extends JFrame {
 		JLabel dfslfabeto = new JLabel("Alfabeto");
 		panel_3.add(dfslfabeto);
 		
-		textField = new JTextField();
-		panel_3.add(textField);
-		textField.setColumns(10);
+		textoAlfabeto = new JTextField();
+		panel_3.add(textoAlfabeto);
+		textoAlfabeto.setColumns(10);
 		
 		textoEntrada = new JTextArea();
 		JScrollPane scrollpaneR = new JScrollPane(textoEntrada);
@@ -166,7 +167,6 @@ public class Interfaz extends JFrame {
 		
 		JLabel lblNewLabel_3 = new JLabel("Introduce matriz A.  ");
 		panel_redundancia.add(lblNewLabel_3, BorderLayout.NORTH);
-		
 		JPanel panel_cifrado = new JPanel();
 		tabbedPane.addTab("Cifrado", null, panel_cifrado, null);
 		panel_cifrado.setLayout(new BorderLayout(0, 0));
@@ -182,7 +182,7 @@ public class Interfaz extends JFrame {
 		privado.add(clavePrivado, BorderLayout.SOUTH);
 		clavePrivado.setColumns(10);
 		
-		JPanel publico = new JPanel();
+		publico = new JPanel();
 		panel_cifrado.add(publico, BorderLayout.CENTER);
 		publico.setLayout(new BorderLayout(0, 0));
 		datosPublicaRSA = new JPanel();
