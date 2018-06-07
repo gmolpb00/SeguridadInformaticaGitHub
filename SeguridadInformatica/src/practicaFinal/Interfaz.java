@@ -50,6 +50,7 @@ public class Interfaz extends JFrame {
 	private JTextField textoFactor1;
 	private JTextField textoFactor2;
 	public JPanel publico;
+	private JTextField textoQ;
 
 	/**
 	 * Launch the application.
@@ -99,18 +100,6 @@ public class Interfaz extends JFrame {
 		contentPane.add(panel_izquierdo, BorderLayout.WEST);
 		panel_izquierdo.setLayout(new BorderLayout(10, 0));
 
-		JPanel panel_3 = new JPanel();
-		panel_izquierdo.add(panel_3, BorderLayout.NORTH);
-		panel_3.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-
-		JLabel dfslfabeto = new JLabel("Alfabeto");
-		panel_3.add(dfslfabeto);
-
-		textoAlfabeto = new JTextField(
-				"abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZáéíóúÁÉÍÓÚ0123456789 ,.:-¿?()");
-		panel_3.add(textoAlfabeto);
-		textoAlfabeto.setColumns(10);
-
 		textoEntrada = new JTextArea("patata? 123456");
 		JScrollPane scrollpaneR = new JScrollPane(textoEntrada);
 		textoEntrada.setColumns(12);
@@ -129,6 +118,33 @@ public class Interfaz extends JFrame {
 		textoEntropia.setEditable(false);
 		panel_4.add(textoEntropia);
 		textoEntropia.setColumns(10);
+								
+								JPanel panel_10 = new JPanel();
+								panel_izquierdo.add(panel_10, BorderLayout.NORTH);
+								panel_10.setLayout(new BorderLayout(0, 0));
+										
+										JPanel panel_11 = new JPanel();
+										panel_10.add(panel_11, BorderLayout.SOUTH);
+										panel_11.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+										
+										JLabel lblQ = new JLabel("           Q");
+										panel_11.add(lblQ);
+										
+										textoQ = new JTextField("");
+										textoQ.setColumns(10);
+										panel_11.add(textoQ);
+								
+										JPanel panel_3 = new JPanel();
+										panel_10.add(panel_3);
+										panel_3.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+										
+												JLabel dfslfabeto = new JLabel("Alfabeto");
+												panel_3.add(dfslfabeto);
+												
+														textoAlfabeto = new JTextField(
+																"abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZáéíóúÁÉÍÓÚ0123456789 ,.:-¿?()");
+														panel_3.add(textoAlfabeto);
+														textoAlfabeto.setColumns(10);
 
 		JPanel panel_central = new JPanel();
 		panel_central.setBorder(new EmptyBorder(0, 10, 0, 10));

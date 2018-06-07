@@ -106,5 +106,33 @@ public class Principal {
 		}
 		return solucion;
 	}
-
+	public int[][] convertirMatriz(String original){
+		StringBuilder avanzado = new StringBuilder(original);
+		long count = original.chars().filter(ch -> ch == '[').count();
+		int contador = 0;
+		for(int o = 0; o<original.length(); o++) {
+			if (original.charAt(0) != '[' &&  original.charAt(0) != ']')
+				contador++;
+			if (original.charAt(0) == ']') {
+				break;
+			}
+		}
+		char e = ' ';
+		String nuevo = original.replace('[', e);
+		int[][] resultado = new int[(int)count-1][contador];
+		int indice = 0;
+		for(int i = 0; i<(int)count-1; i++) {
+			for (int j = 0; j<contador; j++) {
+				while(nuevo.charAt(indice) == ' ') {
+					indice++;
+				}
+				resultado[i][j] = nuevo.charAt(indice);
+				indice++;
+			}
+			
+		}
+		
+		
+		return resultado;
+	}
 }
