@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Principal {
 	public static final String fuenteEjemplo = new String(
-			"Cuanto peor mejor para todos y cuanto peor para todos mejor, mejor para mi, el suyo, beneficio politico.");
+			"Puedo escribir los versos más tristes esta noche. Yo la quise, y a veces ella también me quiso. En las noches como ésta la tuve entre mis brazos. La besé tantas veces bajo el cielo infinito.");
 	public static final Double[] probabilidades = { 0.3, 0.2, 0.1, 0.1, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05 };
 	public static String[] BINARIO = { "0", "1" };
 

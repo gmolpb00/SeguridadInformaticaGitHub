@@ -72,7 +72,6 @@ public class CodigosCorrectores {
 
 		porcentajeRuido = (int) (porcentajeRuido*0.2);
 		
-		System.out.println(porcentajeRuido);
 		for (int i = 0; i < codigoLimpio.length; i++) {
 			porcentajeRandom = (int) (Math.random() * 100);
 

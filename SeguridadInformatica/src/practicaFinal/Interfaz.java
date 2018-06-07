@@ -10,6 +10,9 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.Box;
 import javax.swing.JButton;
@@ -28,13 +31,13 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
-import org.omg.Messaging.SyncScopeHelper;
-
+@SuppressWarnings("serial")
 public class Interfaz extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textoAlfabeto;
 	private JTextField textoEntropia;
+	private JTextField textoEficacia;
 	private JTextField matrizRedundancia;
 	private JTextField clavePrivado;
 	private JTextField textoNumeropalabras;
@@ -121,6 +124,14 @@ public class Interfaz extends JFrame {
 		textoEntropia.setEditable(false);
 		panel_4.add(textoEntropia);
 		textoEntropia.setColumns(10);
+		
+		JLabel lblNewLabel2 = new JLabel("Eficacia");
+panel_4.add(lblNewLabel2);
+
+textoEficacia = new JTextField();
+textoEficacia.setEditable(false);
+panel_4.add(textoEficacia);
+textoEficacia.setColumns(10);
 
 		JPanel panel_10 = new JPanel();
 		panel_izquierdo.add(panel_10, BorderLayout.NORTH);
@@ -133,7 +144,7 @@ public class Interfaz extends JFrame {
 		JLabel lblQ = new JLabel("           Q");
 		panel_11.add(lblQ);
 
-		textoQ = new JTextField("");
+		textoQ = new JTextField("4");
 		textoQ.setColumns(10);
 		panel_11.add(textoQ);
 
@@ -164,7 +175,7 @@ public class Interfaz extends JFrame {
 		tabbedPane.addTab("Ruido", null, panel_ruido, null);
 		panel_ruido.setLayout(new BorderLayout(5, 5));
 
-		JLabel lblNewLabel_2 = new JLabel("Elige el % de ruido a simular");
+		JLabel lblNewLabel_2 = new JLabel("Elige el % de ruido a simular. Maximo 20%");
 		// lblNewLabel_2.setLocation(5, 15);
 		lblNewLabel_2.setFont(new Font("DejaVu Sans", Font.PLAIN, 14));
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
@@ -182,7 +193,7 @@ public class Interfaz extends JFrame {
 		panel_redundancia.setLayout(new BorderLayout(0, 0));
 
 		matrizRedundancia = new JTextField();
-		matrizRedundancia.setText("[[1,1,0],[1,0,1]]");
+		matrizRedundancia.setText("[[0,1,2,3],[1,1,3,1],[3,2,3,0],[2,3,0,2],[0,3,3,1]]");
 		panel_redundancia.add(matrizRedundancia, BorderLayout.CENTER);
 		matrizRedundancia.setColumns(10);
 
@@ -327,7 +338,7 @@ public class Interfaz extends JFrame {
 		panel_derecho.add(panel_derecho_der, BorderLayout.EAST);
 		panel_derecho_der.setLayout(new BorderLayout(10, 10));
 
-		JLabel lblNewLabel_8 = new JLabel("Codigo no-arreglado/arreglado");
+		JLabel lblNewLabel_8 = new JLabel("Codigo arreglado / no arreglado");
 		panel_derecho_der.add(lblNewLabel_8, BorderLayout.NORTH);
 
 		JTextArea codigoSinArreglar = new JTextArea();
@@ -360,7 +371,8 @@ public class Interfaz extends JFrame {
 				RSA rsa = new RSA();
 				Vigenere vigenere = new Vigenere();
 				CodigosCorrectores codigosCorrectores = new CodigosCorrectores();
-
+				EntropiaEficacia entropiaEficacia= new EntropiaEficacia();
+				
 				String alf = null;
 				int qValor = 0;
 				int porcentajeRuido = 0;
@@ -414,7 +426,6 @@ public class Interfaz extends JFrame {
 					mensajeDescifrado = rsa.descodificarRSABloque(cifradoSinRuidoPosterior, alf, eValor, nValor,
 							factorn1Valor, factorn2Valor);
 				}
-				System.out.println(mensajeDescifrado);
 
 				textoSalida.setText(mensajeDescifrado);
 				codigoArreglado.setText(cifradoSinRuidoPosterior);
@@ -430,6 +441,10 @@ public class Interfaz extends JFrame {
 				}
 
 				textField_1.setText(String.valueOf(contador));
+
+				Double[] entropiaYFrecuencia = entropiaEficacia.entropiaYFrecuenciaTexto(mensajeEnClaro, qValor);
+				textoEntropia.setText(String.valueOf(Math.round (entropiaYFrecuencia[0] * 10000.0) / 10000.0));
+				textoEficacia.setText(String.valueOf(Math.round (entropiaYFrecuencia[1] * 10000.0) / 10000.0));
 			}
 		});
 		botonEmpezar.setBackground(new Color(143, 188, 143));
@@ -495,4 +510,5 @@ public class Interfaz extends JFrame {
 		 * resultado;
 		 */
 	}
+
 }
