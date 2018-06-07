@@ -5,10 +5,6 @@ import java.util.HashMap;
 
 public class CodigosCorrectores {
 
-	public static void main(String[] args) {
-
-	}
-
 	public String descodificarConRuido(int[] codigo, String alfabeto, int[][] matrizA, int qario) {
 
 		int[][] codificacion = dividirVectorPorMatriz(codigo, matrizA.length + matrizA[0].length);

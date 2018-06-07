@@ -5,35 +5,6 @@ import java.util.ArrayList;
 
 public class RSA {
 
-	/*
-	 * public static final String alfabeto =
-	 * "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ 1234567890";
-	 * 
-	 * public static final String textoLimpio =
-	 * "IIIIII1IIIIII2IIIIII3IIIIIIIIIIII4IIIIII5IIIIII6IIIIII7IIIIII8IIIIII9IIIIII0";
-	 * 
-	 * public static final BigInteger e = new BigInteger("356812573");
-	 * 
-	 * public static final BigInteger n = new BigInteger("62439738695706104201747");
-	 * 
-	 * public static final BigInteger factorn1 = new BigInteger("249879448303");
-	 * public static final BigInteger factorn2 = new BigInteger("249879448349");
-	 */
-	public static void main(String[] args) {
-		/*
-		 * RSA objeto = new RSA();
-		 * 
-		 * 
-		 * String aux = objeto.codificarRSABloque(textoLimpio, alfabeto, e, n);
-		 * System.out.println(aux); aux = objeto.descodificarRSABloque(aux, alfabeto, e,
-		 * n, factorn1, factorn2); System.out.println(aux);
-		 * 
-		 * 
-		 * aux = objeto.codificarRSA("1232123212321", e, n); System.out.println(aux);
-		 * aux = objeto.descodificarRSA(aux, e, n, factorn1, factorn2);
-		 * System.out.println(aux);
-		 */
-	}
 
 	public int obtenerK(String alf, BigInteger n) {
 		int solucion = (int) Math.floor((Math.log(Double.valueOf(n.toString())) / Math.log(alf.length())));
@@ -63,6 +34,11 @@ public class RSA {
 	public String codificarRSABloque(String mensajeLimpio, String alf, BigInteger e, BigInteger n) {
 
 		int K = obtenerK(alf, n);
+
+		while(mensajeLimpio.length()%K !=0) {
+			mensajeLimpio+=" ";
+
+		}
 
 		int[] mensajeCodigo = codificacionNumerica(mensajeLimpio, alf);
 
@@ -172,7 +148,7 @@ public class RSA {
 
 					BigInteger x = potenciacionModular(new BigInteger(String.valueOf(N)),
 							new BigInteger(String.valueOf(k - j - 1)), n)
-									.multiply(new BigInteger(String.valueOf(aux[j])));
+							.multiply(new BigInteger(String.valueOf(aux[j])));
 
 					c = c.add(x);
 
