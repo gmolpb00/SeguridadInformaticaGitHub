@@ -82,6 +82,7 @@ public class Interfaz extends JFrame {
 		setJMenuBar(menuBar);
 		
 		JMenuItem botonLimpiar = new JMenuItem("limpiar");
+		
 		botonLimpiar.setBackground(UIManager.getColor("OptionPane.questionDialog.titlePane.shadow"));
 		menuBar.add(botonLimpiar);
 		contentPane = new JPanel();
@@ -334,7 +335,29 @@ public class Interfaz extends JFrame {
 		panel_derecho_der.add(scrollpanA, BorderLayout.SOUTH);
 		
 		JButton botonEmpezar = new JButton("Empezar");
+		botonEmpezar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				
+			}
+		});
 		botonEmpezar.setBackground(new Color(143, 188, 143));
 		contentPane.add(botonEmpezar, BorderLayout.SOUTH);
+		botonLimpiar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				textoSalida.setText("");
+				textoE.setText("");
+				textoEntrada.setText("");
+				textoEntropia.setText("");
+				textoN.setText("");
+				textoNumeropalabras.setText("");
+				codigoArreglado.setText("");
+				codigoSinArreglar.setText("");
+			}
+		});
 	}
 }
